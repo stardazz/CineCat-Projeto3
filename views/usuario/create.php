@@ -1,11 +1,3 @@
-<?php 
-    //Incluir o arquivo para carregamento das classes
-    require "../../autoload.php";
-
-    // Instanciar um objeto da classe DAO
-    $dao = new UsuarioDAO();
-?>
-
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -368,41 +360,34 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Gerenciamento de Usuarios</h1>
+            <h1 class="h2">Cadastrar Usuarios</h1>
             
             </div>
-            <p>
-              <a href="create.php">Novo  Usuario</a>
-            </p>
-
+           
           
           <div class="table-responsive small">
-            <table class='table table-hover'>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Senha</th>
-                    <th>Ações</th>
-                </tr>
-                <?php foreach($dao->read() as $usuario) : ?>
-                    <tr>
-                        <td><?= $usuario->getId() ?></td>
-                        <td><?= $usuario->getNome() ?></td>
-                        <td><?= $usuario->getEmail() ?></td>
-                        <td><?= $usuario->getSenha() ?></td>
-                        <td>
-                          <a href="edit.php?id=<?= $usuario->getId() ?>">
-                            Editar
-                          </a>
-                          <a href="destroy.php?id=<?= $usuario->getId() ?>">
-                            Excluir
-                          </a>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
-            </table>
-          </div>
+            <form action="insert.php" method="post">
+                <div class=="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" class="form-control">
+                
+                </div>
+                 <div class=="form-group">
+                    <label for="nome">Email</label>
+                    <input type="text" name="email" class="form-control">
+                
+                </div>
+                 <div class=="form-group">                                                                                                      
+                    <label for="nome">Senha</label>
+                    <input type="text" name="senha" class="form-control">
+                
+                </div>
+                <div class= "form-group">
+                    <input type="reset" value="Limpar" class="btn">
+                    <input type="submit" value="Salvar" class="btn btn-info">
+        </div>
+        </form>
+        </div>
         </main>
       </div>
     </div>
