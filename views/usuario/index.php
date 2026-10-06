@@ -25,6 +25,7 @@
     />
     <script src="../../js/color-modes.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
@@ -392,11 +393,11 @@
                         <td><?= $usuario->getEmail() ?></td>
                         <td><?= $usuario->getSenha() ?></td>
                         <td>
-                          <a href="edit.php?id=<?= $usuario->getId() ?>">
-                            Editar
+                          <a title="Editar" href="edit.php?id=<?= $usuario->getId() ?>">
+                            <i class="bi bi-pencil-fill"></i>
                           </a>
-                          <a href="destroy.php?id=<?= $usuario->getId() ?>">
-                            Excluir
+                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $usuario->getId() ?>">
+                            <i class="bi bi-person-x"></i>
                           </a>
                         </td>
                     </tr>
