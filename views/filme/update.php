@@ -10,6 +10,7 @@
     $filme->setDuracao($_POST['duracao']);
     $filme->setClassificacao($_POST['classificacao']);
     $filme->setSinopse($_POST['sinopse']);
+    $filme->setId($_POST['id']);
 
     // Instanciar um objeto da classe filmeDAO
     $dao = new FilmeDAO();

@@ -12,8 +12,8 @@
     $filme->setClassificacao($_POST['classificacao']);
     $filme->setSinopse($_POST['sinopse']);
 
-    //Instanciar um objeto dA classe filmeDAO
-    $dao = new filmeDAO();
+    //Instanciar um objeto da classe filmeDAO
+    $dao = new FilmeDAO();
 
     //Invocar o metodo create
     $dao->create($filme);

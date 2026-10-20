@@ -1,5 +1,5 @@
 <?php
-    class filmeDAO {
+    class FilmeDAO {
         public function create($filme) {
             try {
                 $query = BD::getConexao()->prepare(
@@ -31,7 +31,7 @@
 
                 $listafilmes = array();
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
-                    $filme = new filme(); // Classe bean
+                    $filme = new Filme(); // Classe bean
                     $filme->setId($linha['id_filme']);
                     $filme->setTitulo($linha['titulo']);
                     $filme->setGenero($linha['genero']);
@@ -65,7 +65,7 @@
                     $filme->setTitulo($linha['titulo']);
                     $filme->setGenero($linha['genero']);
                     $filme->setDuracao($linha['duracao']);
-                    $filme->setClassificacao($linha['senha']);
+                    $filme->setClassificacao($linha['classificacao']);
                     $filme->setSinopse($linha['sinopse']);
                 }
                 return $filme;
@@ -86,6 +86,7 @@
                 $query->bindValue(':d', $filme->getDuracao(), PDO::PARAM_STR);
                 $query->bindValue(':c', $filme->getClassificacao(), PDO::PARAM_STR);
                 $query->bindValue(':s', $filme->getSinopse(), PDO::PARAM_STR);
+                $query->bindValue(':i', $filme->getId(), PDO::PARAM_INT);
 
                  if(!$query->execute()) {
                     print_r($query->errorInfo());

@@ -3,7 +3,7 @@
     require "../../autoload.php";
 
     // Instanciar um objeto da classe DAO
-    $dao = new SalaDAO();
+    $dao = new salaDAO();
 ?>
 
 <!doctype html>
@@ -24,6 +24,7 @@
     />
     <script src="../../js/color-modes.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
@@ -370,6 +371,9 @@
             <h1 class="h2">Gerenciamento de Salas</h1>
             
           </div>
+            <p>
+              <a href="create.php">Nova Sala</a>
+            </p>
           
           <div class="table-responsive small">
             <table class="table table-hover">
@@ -377,12 +381,22 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Capacidade</th>
+                    <th>Ações</th>
                 </tr>
                 <?php foreach($dao->read() as $sala) : ?>
                     <tr>
                         <td><?= $sala->getId() ?></td>
                         <td><?= $sala->getNome() ?></td>
                         <td><?= $sala->getCapacidade() ?></td>
+                        <td>
+                          <a title="Editar" href="edit.php?id=<?= $sala->getId() ?>">
+                            <i class="bi bi-pencil-fill"></i>
+                          </a>
+                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $sala->getId() ?>">
+                            <i class="bi bi-person-x"></i>
+                          </a>
+                        </td>
+
                     </tr>
                 <?php endforeach ?>
             </table>

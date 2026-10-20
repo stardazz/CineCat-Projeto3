@@ -395,7 +395,7 @@
                 </div>
                  <div class="form-group">
                     <label for="nome">Sinopse</label>
-                    <input type="text" name="sinopse" value="<?= $filme->getSinopse() ?>" class="form-control">
+                    <textarea class ="form-control" name="sinopse" id=""><?= $filme->getSinopse() ?></textarea>
                 
                 </div>
                 <input type="hidden" name="id" value="<?= $filme->getId() ?>">
