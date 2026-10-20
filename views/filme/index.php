@@ -3,7 +3,7 @@
     require "../../autoload.php";
 
     // Instanciar um objeto da classe DAO
-    $dao = new FilmeDAO();
+    $dao = new filmeDAO();
 ?>
 
 <!doctype html>
@@ -24,6 +24,7 @@
     />
     <script src="../../js/color-modes.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
@@ -370,25 +371,36 @@
             <h1 class="h2">Gerenciamento de Filmes</h1>
             
           </div>
+            <p>
+              <a href="create.php">Novo Filme</a>
+            </p>
           
           <div class="table-responsive small">
             <table class="table table-hover">
                 <tr>
                     <th>ID</th>
                     <th>Título</th>
-                    <th>Genero</th>
                     <th>Duração</th>
                     <th>Classificação</th>
                     <th>Sinopse</th>
+                    <th>Ações</th>
                 </tr>
                 <?php foreach($dao->read() as $filme) : ?>
                     <tr>
                         <td><?= $filme->getId() ?></td>
                         <td><?= $filme->getTitulo() ?></td>
-                        <td><?= $filme->getGenero() ?></td>
                         <td><?= $filme->getDuracao() ?></td>
                         <td><?= $filme->getClassificacao() ?></td>
                         <td><?= $filme->getSinopse() ?></td>
+                        <td>
+                          <a title="Editar" href="edit.php?id=<?= $filme->getId() ?>">
+                            <i class="bi bi-pencil-fill"></i>
+                          </a>
+                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $filme->getId() ?>">
+                            <i class="bi bi-person-x"></i>
+                          </a>
+                        </td>
+
                     </tr>
                 <?php endforeach ?>
             </table>
