@@ -10,6 +10,13 @@
     $sessao->setHorario($_POST['horario']);
     $sessao->setPreco($_POST['preco']);
 
+    // Instanciar um obejto do Filme
+    $filme = new Filme();
+    $filme->setId($_POST['id_filme']);
+
+    //Definir a categoria na sessao
+    $sessao->setFilme($filme);
+
     //Instanciar um objeto dA classe salaDAO
     $dao = new SessaoDAO();
 
