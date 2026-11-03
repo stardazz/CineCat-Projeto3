@@ -1,27 +1,30 @@
 <?php
-    // Incluir o arquivo de autload 
     require "../../autoload.php";
 
-    //Instanciar um obejto da classe Cliente (bean)
     $sessao = new Sessao();
 
-    //Definir os valores dos atributos a partir do form
+    // Definir os valores da sessão
     $sessao->setData($_POST['data']);
     $sessao->setHorario($_POST['horario']);
     $sessao->setPreco($_POST['preco']);
 
-    // Instanciar um obejto do Filme
+    // Instanciar objeto Filme
     $filme = new Filme();
     $filme->setId($_POST['id_filme']);
 
-    //Definir a categoria na sessao
     $sessao->setFilme($filme);
 
-    //Instanciar um objeto dA classe salaDAO
+    // Instanciar objeto Sala
+    $sala = new Sala();
+    $sala->setId($_POST['id_sala']);
+
+    $sessao->setSala($sala);
+
+    // Instanciar DAO
     $dao = new SessaoDAO();
 
-    //Invocar o metodo create
+    // Invocar método create
     $dao->create($sessao);
 
-    //Redirecionar para o index (COMENTAR CASAO NÃO FUNCIONE)
+    // Redirecionar
     header('Location: index.php');

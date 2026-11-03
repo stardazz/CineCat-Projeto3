@@ -388,17 +388,17 @@
                 </tr>
                 <?php foreach($dao->read() as $sessao) : ?>
                     <tr>
-                        <td><?= $sessao->getId() ?></td>
+                        <td><?= $sessao->getId_Sessao() ?></td>
                         <td><?= $sessao->getData() ?></td>
                         <td><?= $sessao->getHorario() ?></td>
                         <td><?= $sessao->getPreco() ?></td>
                         <td><?= $sessao->getFilme()->getTitulo() ?></td>
                         <td><?= $sessao->getSala()->getNome() ?></td>
                         <td>
-                          <a title="Editar" href="edit.php?id=<?= $sala->getId() ?>">
+                          <a title="Editar" href="edit.php?id=<?= $sala->getId_Sessao() ?>">
                             <i class="bi bi-pencil-fill"></i>
                           </a>
-                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $sala->getId() ?>">
+                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $sala->getId_Sessao() ?>">
                             <i class="bi bi-person-x"></i>
                           </a>
                         </td>

@@ -385,12 +385,12 @@
                 
                 </div>
                  <div class="form-group">
-                    <label for="nome">Preço</label>
-                    <input type="text" name="horario" class="form-control">
+                    <label for="preco">Preço</label>
+                    <input type="number" name="preco" class="form-control">
                 
                 </div>
 
-                <div class+="form-group">
+                <div class="form-group">
                     <label for="id_filme">Filme</label>
                     <select name="id_filme" class="form-control">
                         <?php foreach($daoFilme->read() as $filme) : ?>
@@ -399,7 +399,7 @@
                     </select>
                 </div>
 
-                <div class+="form-group">
+                <div class="form-group">
                     <label for="id_sala">Sala</label>
                     <select name="id_sala" class="form-control">
                         <?php foreach($daoSala->read() as $sala) : ?>

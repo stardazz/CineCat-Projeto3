@@ -1,7 +1,7 @@
 <?php
     class Sessao{
         //Atributos
-        private $id;
+        private $id_sessao;
         private $data;
         private $horario;
         private $preco;
@@ -9,12 +9,12 @@
         private $sala; //ASSOCIAÇÃO COM CLASSE SALA
 
         //Métodos de encapsulamento (getters e setters)
-        public function getId(){
-            return $this->id;
+        public function getId_Sessao(){
+            return $this->id_sessao;
         }
 
-        public function setId($id){
-            $this->id = $id;
+        public function setId_Sessao($id_sessao){
+            $this->id_sessao = $id_sessao;
         }
 
         public function getData(){

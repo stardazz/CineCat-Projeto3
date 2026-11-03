@@ -39,11 +39,11 @@
                     $sessao->setPreco($linha['preco']);
                     // Atributo da associação
                     $daoFilme = new FilmeDAO();
-                    $filme = $daoFilme->find($linha['id_filme'])
+                    $filme = $daoFilme->find($linha['id_filme']);
                     $sessao->setFilme($filme);
                     
                     $daoSala = new SalaDAO();
-                    $sala = $daoSala->find($linha['id_sala'])
+                    $sala = $daoSala->find($linha['id_sala']);
                     $sessao->setSala($sala);
 
                     array_push($listaSessoes, $sessao);
