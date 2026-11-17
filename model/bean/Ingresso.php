@@ -40,7 +40,7 @@
             $this->assento = $assento;
         }
 
-        public function getFormaPagamaneto() {
+        public function getFormaPagamento() {
             return $this->formapagamento;
         }
 

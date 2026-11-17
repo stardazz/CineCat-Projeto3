@@ -7,7 +7,7 @@
                     VALUES ( :u, :s, :a, :f)"
                 );
                 $query->bindValue(':u', $ingresso->getUsuario()->getId(), PDO::PARAM_INT);
-                $query->bindValue(':s', $ingresso->getSessao()->getId(), PDO::PARAM_INT);
+                $query->bindValue(':s', $ingresso->getSessao()->getId_Sessao(), PDO::PARAM_INT);
                 $query->bindValue(':a', $ingresso->getAssento()->getId(), PDO::PARAM_INT);
                 $query->bindValue(':f', $ingresso->getFormaPagamento(), PDO::PARAM_STR);
 
@@ -32,10 +32,8 @@
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
                     $ingresso = new Ingresso(); // Classe bean
                     $ingresso->setId($linha['id_ingresso']);
-                    $ingresso->setUsuario($linha['id_usuario']);
-                    $ingresso->setSessao($linha['id_sessao']);
-                    $ingresso->setAssento($linha['assento']);
                     $ingresso->setFormaPagamento($linha['formapagamento']);
+
                     // Atributo da associação (com Usuario)
                     $daoUsuario = new UsuarioDAO();
                     $usuario = $daoUsuario->find($linha['id_usuario']);
@@ -48,7 +46,7 @@
 
                     // Atributo da associação (com Assento)
                     $daoAssento = new AssentoDAO();
-                    $assento = $daoAssento->find($linha['id_assento']);
+                    $assento = $daoAssento->find($linha['assento_idassento']);
                     $ingresso->setAssento($assento);
 
 
@@ -78,7 +76,7 @@
                     $ingresso->setId($linha['id_ingresso']);
                     $ingresso->setUsuario($linha['id_usuario']);
                     $ingresso->setSessao($linha['id_sessao']);
-                    $ingresso->setAssento($linha['assento']);
+                    $ingresso->setAssento($linha['assento_idassento']);
                     $ingresso->setFormaPagamento($linha['formapagamento']);
                 }
                 

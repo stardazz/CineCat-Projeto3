@@ -2,7 +2,10 @@
     require "../../autoload.php";
 
     $dao = new SessaoDAO();
-    $sessao = $dao->find($_GET['id_sessao']);
+    $sessao = $dao->find($_GET['id']);
+
+    $daoFilme = new FilmeDAO();
+    $daoSala = new SalaDAO();
 ?>
 
 <!doctype html>
@@ -380,7 +383,7 @@
                 </div>
                  <div class="form-group">
                     <label for="nome">Horário</label>
-                    <input type="text" name="horario" value="<?= $sessao->getSessao() ?>" class="form-control">
+                    <input type="text" name="horario" value="<?= $sessao->getHorario() ?>" class="form-control">
                 
                 </div>
                  <div class="form-group">
@@ -388,8 +391,42 @@
                     <input type="text" name="preco" value="<?= $sessao->getPreco() ?>" class="form-control">
                 
                 </div>
+
+                <div class="form-group">
+                  <label for="id_filme">Filme</label>
+                  <select name="id_filme" class="form-control">
+                    <?php foreach($daoFilme->read() as $filme) : ?>
+                      <?php if($filme->getId() == $sessao->getFilme()->getId()) : ?>
+                        <option selected value="<?= $filme->getId() ?>">
+                          <?= $filme->getTitulo() ?>
+                        </option>
+                      <?php else : ?>
+                        <option value="<?= $filme->getId() ?>">
+                          <?= $filme->getTitulo() ?>
+                        </option>
+                      <?php endif ?>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="id_sala">Sala</label>
+                  <select name="id_sala" class="form-control">
+                    <?php foreach($daoSala->read() as $sala) : ?>
+                      <?php if($sala->getId() == $sessao->getSala()->getId()) : ?>
+                        <option selected value="<?= $sala->getId() ?>">
+                          <?= $sala->getNome() ?>
+                        </option>
+                      <?php else : ?>
+                        <option value="<?= $sala->getId() ?>">
+                          <?= $sala->getNome() ?>
+                        </option>
+                      <?php endif ?>
+                    <?php endforeach ?>
+                  </select>
+                </div>
                 
-                <input type="hidden" name="id_sessao" value="<?= $sessao->getId() ?>">
+                <input type="hidden" name="id_sessao" value="<?= $sessao->getId_Sessao() ?>">
 
                 <div class= "form-group">
                     <input type="reset" value="Limpar" class="btn">

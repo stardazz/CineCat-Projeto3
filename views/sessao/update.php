@@ -9,9 +9,20 @@
     $sessao->setHorario($_POST['horario']);
     $sessao->setPreco($_POST['preco']);
     $sessao->setId_Sessao($_POST['id_sessao']);
-    $sessao->setFilme($_POST['id_filme']);
-    $sessao->setSala($_POST['id_sala']);
 
+    // Instanciar um objeto do Filme
+    $filme = new Filme();
+    $filme->setId($_POST['id_filme']);
+
+    // Definir o filme na sessão
+    $sessao->setFilme($filme);
+
+    // Instanciar um objeto da Sala
+    $sala = new Sala();
+    $sala->setId($_POST['id_sala']);
+
+    // Definir a sala na sessão
+    $sessao->setSala($sala);
 
     // Instanciar um objeto da classe sessaoDAO
     $dao = new SessaoDAO();

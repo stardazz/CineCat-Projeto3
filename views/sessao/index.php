@@ -395,10 +395,10 @@
                         <td><?= $sessao->getFilme()->getTitulo() ?></td>
                         <td><?= $sessao->getSala()->getNome() ?></td>
                         <td>
-                          <a title="Editar" href="edit.php?id=<?= $sala->getId_Sessao() ?>">
+                          <a title="Editar" href="edit.php?id=<?= $sessao->getId_Sessao() ?>">
                             <i class="bi bi-pencil-fill"></i>
                           </a>
-                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $sala->getId_Sessao() ?>">
+                          <a title="Excluir" class="link-danger" href="destroy.php?id_sessao=<?= $sessao->getId_Sessao() ?>">
                             <i class="bi bi-person-x"></i>
                           </a>
                         </td>
