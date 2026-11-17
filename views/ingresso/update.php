@@ -7,7 +7,7 @@
     // Definir os valores dos atributos a partir dos dados do form
     $ingresso->setUsuario($_POST['id_usuario']);
     $ingresso->setSessao($_POST['id_sessao']);
-    $ingresso->setAssento($_POST['id_assento']);
+    $ingresso->setAssento($_POST['assento_idassento']);
     $ingresso->setFormaPagamento($_POST['formapagamento']);
     $ingresso->setId($_POST['id_ingresso']);
 
@@ -24,6 +24,13 @@
 
     // Definir a sessão no ingresso
     $ingresso->setSessao($sessao);
+
+    // Instanciar um objeto do Assento
+    $assento = new Assento();
+    $assento->setId($_POST['assento_idassento']);
+
+    // Definir o assento no ingresso
+    $ingresso->setAssento($assento);
 
     // Instanciar um objeto da classe ingressoDAO
     $dao = new IngressoDAO();

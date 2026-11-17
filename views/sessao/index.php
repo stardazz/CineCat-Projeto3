@@ -389,8 +389,12 @@
                 <?php foreach($dao->read() as $sessao) : ?>
                     <tr>
                         <td><?= $sessao->getId_Sessao() ?></td>
-                        <td><?= $sessao->getData() ?></td>
-                        <td><?= $sessao->getHorario() ?></td>
+                        <td>
+                            <?= date('d/m/Y', strtotime($sessao->getData())) ?>
+                        </td>
+                        <td>
+                            <?= date('H:i', strtotime($sessao->getHorario())) ?>
+                        </td>
                         <td><?= $sessao->getPreco() ?></td>
                         <td><?= $sessao->getFilme()->getTitulo() ?></td>
                         <td><?= $sessao->getSala()->getNome() ?></td>

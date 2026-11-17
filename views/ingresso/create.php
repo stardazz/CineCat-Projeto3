@@ -403,8 +403,8 @@
                  <div class="form-group">
                     <label for="formapagamento">Forma de Pagamento</label>
                     <select name="formapagamento" class="form-control">
-                        <option value="pix">Pix</option>
-                        <option value="cartao">Cartão</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão">Cartão</option>
                     </select>
                 </div>
 

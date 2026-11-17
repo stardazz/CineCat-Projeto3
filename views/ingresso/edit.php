@@ -3,7 +3,7 @@
     require "../../autoload.php";
 
     $dao = new IngressoDAO();
-    $ingresso = $dao->find($_GET['id']);
+    $ingresso = $dao->find($_GET['id_ingresso']);
 
     $daoUsuario = new UsuarioDAO();
     $daoSessao = new SessaoDAO();
@@ -371,10 +371,12 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Cadastrar Sessão</h1>
+            <h1 class="h2">Cadastrar Ingresso</h1>
             
             </div>
-
+                
+                <div class="table-responsive small">
+                  <form action="update.php" method="post">
                 <div class="form-group">
                   <label for="id_usuario">Usuário</label>
                   <select name="id_usuario" class="form-control">
@@ -391,17 +393,17 @@
                     <?php endforeach ?>
                   </select>
                 </div>
-
+                
                 <div class="form-group">
                   <label for="id_sessao">Sessão</label>
                   <select name="id_sessao" class="form-control">
                     <?php foreach($daoSessao->read() as $sessao) : ?>
-                      <?php if($sessao->getId() == $ingresso->getSessao()->getId()) : ?>
-                        <option selected value="<?= $sessao->getId() ?>">
+                      <?php if($sessao->getId_Sessao() == $ingresso->getSessao()->getId_Sessao()) : ?>
+                        <option selected value="<?= $sessao->getId_Sessao() ?>">
                           <?= $sessao->getHorario() ?>
                         </option>
                       <?php else : ?>
-                        <option value="<?= $sessao->getId() ?>">
+                        <option value="<?= $sessao->getId_Sessao() ?>">
                           <?= $sessao->getHorario() ?>
                         </option>
                       <?php endif ?>
@@ -426,11 +428,13 @@
                   </select>
                 </div>
 
-                <div class="table-responsive small">
-                <form action="update.php" method="post">
                     <div class="form-group">
                         <label for="formapagamento">Forma de Pagamento</label>
-                        <input type="text" name="formapagamento" value="<?= $ingresso->getFormaPagamento() ?>" class="form-control">
+                      <select name="formapagamento" class="form-select">
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão">Cartão</option>
+                    </select>
+                        <?= $ingresso->getFormaPagamento() ?>
                     </div>
 
                 <input type="hidden" name="id_ingresso" value="<?= $ingresso->getId() ?>">

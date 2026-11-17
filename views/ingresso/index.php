@@ -389,7 +389,9 @@
                     <tr>
                         <td><?= $ingresso->getId() ?></td>
                         <td><?= $ingresso->getUsuario()->getNome() ?></td>
-                        <td><?= $ingresso->getSessao()->getHorario() ?></td>
+                        <td>
+                            <?= date('H:i', strtotime($ingresso->getSessao()->getHorario())) ?>
+                        </td>
                         <td><?= $ingresso->getAssento()->getNumero() ?></td>
                         <td><?= $ingresso->getFormaPagamento() ?></td>
                         <td>

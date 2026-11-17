@@ -74,10 +74,24 @@
                 if($linha = $query->fetch(PDO::FETCH_ASSOC)) {
                     $ingresso = new Ingresso(); // Classe bean
                     $ingresso->setId($linha['id_ingresso']);
-                    $ingresso->setUsuario($linha['id_usuario']);
-                    $ingresso->setSessao($linha['id_sessao']);
-                    $ingresso->setAssento($linha['assento_idassento']);
                     $ingresso->setFormaPagamento($linha['formapagamento']);
+
+                    // usuário
+                    $daoUsuario = new UsuarioDAO();
+                    $usuario = $daoUsuario->find($linha['id_usuario']);
+                    $ingresso->setUsuario($usuario);
+
+                    //sessão
+                    $daoSessao = new SessaoDAO();
+                    $sessao = $daoSessao->find($linha['id_sessao']);
+                    $ingresso->setSessao($sessao);
+
+                    // assento
+                    $daoAssento = new AssentoDAO();
+                    $assento = $daoAssento->find($linha['assento_idassento']);
+                    $ingresso->setAssento($assento);
+
+            return $ingresso;
                 }
                 
                 return $ingresso;
@@ -95,7 +109,7 @@
                     WHERE id_ingresso = :i"
                 );
                 $query->bindValue(':u', $ingresso->getUsuario()->getId(), PDO::PARAM_INT);
-                $query->bindValue(':s', $ingresso->getSessao()->getId(), PDO::PARAM_INT);
+                $query->bindValue(':s', $ingresso->getSessao()->getId_Sessao(), PDO::PARAM_INT);
                 $query->bindValue(':a', $ingresso->getAssento()->getId(), PDO::PARAM_INT);
                 $query->bindValue(':f', $ingresso->getFormaPagamento(), PDO::PARAM_STR);
                 $query->bindValue(':i', $ingresso->getId(), PDO::PARAM_INT);
