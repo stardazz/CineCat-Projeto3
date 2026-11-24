@@ -56,7 +56,7 @@
     <h6
     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"
     >
-    <span>Saved reports</span>
+    <span>Sala e Assento</span>
     <a
         class="link-secondary"
         href="#"
@@ -69,11 +69,11 @@
     </h6>
     <ul class="nav flex-column mb-auto">
     <li class="nav-item">
-        <a class="nav-link d-flex align-items-center gap-2" href="#">
+        <a class="nav-link d-flex align-items-center gap-2" href="../salahasassento">
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#file-earmark-text"></use>
         </svg>
-        Current month
+        Sala e assento
         </a>
     </li>
     <li class="nav-item">
@@ -108,7 +108,7 @@
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#gear-wide-connected"></use>
         </svg>
-        Settings
+        Configuração
         </a>
     </li>
     <li class="nav-item">
@@ -116,7 +116,7 @@
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#door-closed"></use>
         </svg>
-        Sign out
+        Sair
         </a>
     </li>
     </ul>
